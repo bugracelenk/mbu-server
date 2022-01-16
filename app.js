@@ -23,4 +23,9 @@ router.get("/calculatewq", async (req, res, next) => {
 app.use(cors());
 app.use("/", router);
 
+app.use(function (err, req, res, next) {
+  console.error(err.stack);
+  return res.status(500).json({ err });
+});
+
 module.exports = app;
